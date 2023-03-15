@@ -14,7 +14,10 @@ app.use(cors());
 app.use(express.json());
 app.use(config.routes);
 
+let server;
 (async () => {
     await util.database.connectToDatabase();
-    app.listen(process.env.API_PORT || config.defaults.DEFAULT_PORT, () => console.log('Backend Started'))
+    server = app.listen(process.env.API_PORT || config.defaults.DEFAULT_PORT, () => console.log('Backend Started'));
 })();
+
+export { app, server };

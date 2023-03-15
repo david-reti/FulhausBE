@@ -57,4 +57,4 @@ Currently, basic CRUD operations for supported for the acronym resource. All req
 
 ### Errors
 
-In case there is an error, all the endpoints will include an array titled `errors` in the response, and this will contain a list of all the errors that occured. 
+In case there is an error, all the endpoints will include an array titled `errors` in the response, and this will contain a list of all the errors that occured.
