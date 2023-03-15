@@ -1,1 +1,2 @@
-export { connectToDatabase } from './db.util.js';
+export * as database from './database.util.js';
+export * as misc from './misc.util.js';

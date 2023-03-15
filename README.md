@@ -20,7 +20,17 @@ The application has two scripts configured:
 
 Currently, basic CRUD operations for supported for the acronym resource. These are:
 
-- `GET` acronym: return a list of acronym
-- `POST` acronym: create a new acronym 
-- `PATCH` acronym: update an existing acronym
-- `DELETE` acronym: delete an existing acronym
+- `GET /acronym`: return a list of acronyms, sorted by acronym name
+    - ### Query Params:
+        - `limit`: the maximum number of objects per page (integer)
+        - `page`: the page of query results to show (integer)
+        - `search`: case insensitive string of acronym to find (string)
+    - ### Returns:
+        - `page`: the current page being shown (integer)
+        - `objects`: the number of results being shown (integer)
+        - `next`: if there are more objects that can be shown, this is the URL to show them - otherwise null
+        - `results`: list of objects representing the acronyms that have been found
+
+- `POST /acronym`: create a new acronym 
+- `PATCH /acronym`: update an existing acronym
+- `DELETE acronym`: delete an existing acronym
