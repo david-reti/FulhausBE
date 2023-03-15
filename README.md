@@ -18,19 +18,43 @@ The application has two scripts configured:
 
 ## Endpoints
 
-Currently, basic CRUD operations for supported for the acronym resource. These are:
+Currently, basic CRUD operations for supported for the acronym resource. All requests and responses are JSON objects with the supplied parameters. These are:
 
 - `GET /acronym`: return a list of acronyms, sorted by acronym name
-    - ### Query Params:
+    - ### Query Params
         - `limit`: the maximum number of objects per page (integer)
         - `page`: the page of query results to show (integer)
         - `search`: case insensitive string of acronym to find (string)
-    - ### Returns:
+    - ### Returns
         - `page`: the current page being shown (integer)
         - `objects`: the number of results being shown (integer)
-        - `next`: if there are more objects that can be shown, this is the URL to show them - otherwise null
-        - `results`: list of objects representing the acronyms that have been found
+        - `next`: if there are more objects that can be shown, this is the URL to show them - otherwise null (URL | null)
+        - `results`: list of objects representing the acronyms that have been found (Acronym[])
+        - status 200 (OK)
 
-- `POST /acronym`: create a new acronym 
+- `POST /acronym`: create a new acronym
+    - ### Body Params
+        - `acronym`: the name of the acronym to add (string)
+        - `definition`: the definition of the acronym being added (string)
+    - ### Returns
+        - `message`: a message indicating the status of the operation (string)
+        - status 201 (Created)
+
 - `PATCH /acronym`: update an existing acronym
-- `DELETE acronym`: delete an existing acronym
+    - ### Body Params
+        - `acronym`: the name of the acronym to update - required (string)
+        - `definition`: the definition to update (string)
+    - ### Returns
+        - `message`: a message indicating the status of the operation (string)
+        - status 200 (OK)
+
+- `DELETE /acronym`: delete an existing acronym
+    - ### Body Params
+        - `acronym`: the name of the acronym to delete (string)
+    - ### Returns
+        - `message`: a message indicating the status of the operation (string)
+        - status 200 (OK)
+
+### Errors
+
+In case there is an error, all the endpoints will include an array titled `errors` in the response, and this will contain a list of all the errors that occured. 

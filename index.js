@@ -11,6 +11,7 @@ const app = express();
 
 // Enable cors middleware and start using our routes
 app.use(cors());
+app.use(express.json());
 app.use(config.routes);
 
 (async () => {
